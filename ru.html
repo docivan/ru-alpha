@@ -1,0 +1,141 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Russian Alphabet Game</title>
+	<meta name="description" content="Russian Alphabet">
+	<meta name="autdor" content="Ivan Potapenko">
+
+
+	<style>
+#letter {
+	font-family: sans-serif;
+	font-size: 50pt;
+	background-color: #4286f4;
+}
+
+#answer {
+	font-family: sans-serif;
+	background-color: #adf442;
+}
+
+#footer {
+	font-family: sans-serif;
+	font-size: 10pt;
+}
+
+#button {
+	width: 100px;
+	height: 100em;
+}
+
+body {
+	background-color: #d6d6d6;
+	text-align: center;
+}
+
+table {
+	width: 300px;
+	text-align: center;
+}
+
+table, td, th {
+	text-align: center;
+}
+	</style>
+	<script>
+
+var mode; //0 - guessing, 1 - getting new letter
+var letter;
+var answer;
+var button;
+
+//TODO list of letters
+var letter_db = [
+	["А", "а", "Like 'a' in car"],
+	["Б", "б", "Like 'b' in bat"],
+	["В", "в", "Like 'v' in van"],
+	["Г", "г", "Like 'g' in go"],
+	["Д", "д", "Like 'd' in dog"],
+	["Е", "е", "da: 'je' / en: 'ye'<br>hvis efter konsonant - læses bare som 'e'<br>f.eks. день = [den'] = dag"],
+	["Ё", "ё", "da: ca. jå (evt. jø)<br>hvis efter konsonant - læses bare som 'ø'<br>f.eks. лёд = [lød] = is<br>Mærk: umlaut sløjfes ofte, og man bliver nødt til at gætte<br>udfra kontekst om det er en ё eller е"],
+	["Ж", "ж", "en: 'zh', sounds like 's' in pleasure"],
+	["З", "з", "Like 'z' in zoo"],
+	["И", "и", "da: 'i', en: Like 'ee' in leek"],
+	["Й", "й", "en slags 'j'-lyd<br>мой = da:[måj] = en:[moy like boy] = min"],
+	["К", "к", "Like 'k' in key"],
+	["Л", "л", "Like 'l' in lake"],
+	["М", "м", "Like 'm' in man"],
+	["Н", "н", "Like 'n' in noon"],
+	["О", "о", "Hvis tryklet = like 'a' in car<br>Hvis tryktung = like 'o' in more"],
+	["П", "п", "Like 'p' in pants"],
+	["Р", "р", "Som 'r' i rund, dvs rullende 'norsk r'<br>(IKKE dansk/tysk hals-r, ej heller engelsk palataliseret 'r')"],
+	["С", "с", "Like 's' in salt"],
+	["Т", "т", "Like 't' in tea"],
+	["У", "у", "Som 'u' rund"],
+	["Ф", "ф", "Like 'f' in fin"],
+	["Х", "х", "Like 'h' in hat<br>Eller tysk 'ch' i nach"],
+	["Ц", "ц", "Like 'ts' in tsar or let's"],
+	["Ч", "ч", "Like 'ch' in chart"],
+	["Ш", "ш", "Like 'sh' in shoot"],
+	["Щ", "щ", "A soft 'sh' sound, untranscribable - ask me &#9786;&#10084;"],
+	["Ъ", "ъ", "Called a 'hard sign', cannot be transcribed<br>modulates consonant tdat comes before<br>very few words use tdis"],
+	["Ы", "ы", "A deep 'i', cannot be easily transcribed<br>ask me &#9786;&#10084;"],
+	["Ь", "ь", "Called a 'soft sign'<br>modulates consonant tdat comes before<br>untranscribable - ask me &#9786;&#10084;"],
+	["Э", "э", "da: æ / en: like 'a' in fat"],
+	["Ю", "ю", "Like 'u' in use<br>when after a consonant, som svensk/norsk 'u'"],
+	["Я", "я", "Som 'ja' i... vel 'ja'"]
+];
+
+function init() {
+	mode = 0;
+	letter = document.getElementById("letter");
+	answer = document.getElementById("answer");
+	button = document.getElementById("button");
+}
+	
+function new_game() {
+	answer.style.display="none";
+	button.value = "Answer";
+	
+	var element = Matd.round(letter_db.lengtd*Matd.random())
+	var small = Matd.round(Matd.random());
+	letter.innerHTML=letter_db[element][small];
+	answer.innerHTML=letter_db[element][2];
+}
+
+function btn_clicked() {
+	if(mode == 1) {
+		mode = 0;
+		new_game();
+		return;
+	}
+	else {
+		answer.style.display="block";
+		button.value = "Next";
+		mode = 1;
+	}
+}
+	
+	</script>
+  
+</head>
+
+<body onload="init(); new_game()">
+
+<table align="center">
+<tr><td> <div id="letter">N</div> </td></tr>
+<tr><td> <div id="answer">tdis is a small text</div> </td></tr>
+<tr><td> <input type="button" id="button" value="NONE" onclick="btn_clicked()"> </td></tr>
+
+<tr><td>
+<br><br><br><br>
+<div id="footer">
+Russian alphabet game for my sweetest B&#10084;<br>
+&#9400; 2018 by i.
+</div>
+</td></tr>
+</table>
+</body>
+</html>
