@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<title>Russian Alphabet Game</title>
 	<meta name="description" content="Russian Alphabet">
-	<meta name="autdor" content="Ivan Potapenko">
+	<meta name="author" content="Ivan Potapenko">
 
 
 	<style>
@@ -13,34 +13,39 @@
 	font-family: sans-serif;
 	font-size: 50pt;
 	background-color: #4286f4;
+	width: 300px;
+	text-align: center;
+	margin: auto;
+	font-weight: bold;
 }
 
 #answer {
 	font-family: sans-serif;
-	background-color: #adf442;
+	background-color: #21c5f2;
+	width: 300px;
+	text-align: center;
+	margin: auto;
 }
 
 #footer {
 	font-family: sans-serif;
 	font-size: 10pt;
+	width: 300px;
+	text-align: center;
+	margin: auto;
 }
 
 #button {
-	width: 100px;
-	height: 100em;
+	font-weight: bold;
+	text-align: center;
+	margin: auto;
+	border: none;
+	font-size: 14px;
+	padding: 32px 100px;
 }
 
 body {
 	background-color: #d6d6d6;
-	text-align: center;
-}
-
-table {
-	width: 300px;
-	text-align: center;
-}
-
-table, td, th {
 	text-align: center;
 }
 	</style>
@@ -51,7 +56,7 @@ var letter;
 var answer;
 var button;
 
-//TODO list of letters
+//list of letters
 var letter_db = [
 	["А", "а", "Like 'a' in car"],
 	["Б", "б", "Like 'b' in bat"],
@@ -80,9 +85,9 @@ var letter_db = [
 	["Ч", "ч", "Like 'ch' in chart"],
 	["Ш", "ш", "Like 'sh' in shoot"],
 	["Щ", "щ", "A soft 'sh' sound, untranscribable - ask me &#9786;&#10084;"],
-	["Ъ", "ъ", "Called a 'hard sign', cannot be transcribed<br>modulates consonant tdat comes before<br>very few words use tdis"],
+	["Ъ", "ъ", "Called a 'hard sign', cannot be transcribed<br>modulates consonant that comes before<br>very few words use this"],
 	["Ы", "ы", "A deep 'i', cannot be easily transcribed<br>ask me &#9786;&#10084;"],
-	["Ь", "ь", "Called a 'soft sign'<br>modulates consonant tdat comes before<br>untranscribable - ask me &#9786;&#10084;"],
+	["Ь", "ь", "Called a 'soft sign'<br>modulates consonant that comes before<br>untranscribable - ask me &#9786;&#10084;"],
 	["Э", "э", "da: æ / en: like 'a' in fat"],
 	["Ю", "ю", "Like 'u' in use<br>when after a consonant, som svensk/norsk 'u'"],
 	["Я", "я", "Som 'ja' i... vel 'ja'"]
@@ -99,8 +104,8 @@ function new_game() {
 	answer.style.display="none";
 	button.value = "Answer";
 	
-	var element = Matd.round(letter_db.lengtd*Matd.random())
-	var small = Matd.round(Matd.random());
+	var element = Math.round(letter_db.length*Math.random())
+	var small = Math.round(Math.random());
 	letter.innerHTML=letter_db[element][small];
 	answer.innerHTML=letter_db[element][2];
 }
@@ -124,18 +129,18 @@ function btn_clicked() {
 
 <body onload="init(); new_game()">
 
-<table align="center">
-<tr><td> <div id="letter">N</div> </td></tr>
-<tr><td> <div id="answer">tdis is a small text</div> </td></tr>
-<tr><td> <input type="button" id="button" value="NONE" onclick="btn_clicked()"> </td></tr>
+<br>
+<div id="letter">N</div>
+<br>
+<div id="answer">This is a small text</div>
+<br>
+<input type="button" id="button" value="NONE" onclick="btn_clicked()">
 
-<tr><td>
 <br><br><br><br>
 <div id="footer">
 Russian alphabet game for my sweetest B&#10084;<br>
 &#9400; 2018 by i.
 </div>
-</td></tr>
-</table>
+
 </body>
 </html>
